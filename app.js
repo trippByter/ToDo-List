@@ -10,8 +10,21 @@ console.clear();
 
 
 const main = async() => {
-    mostrarMenu();
-    pausa();
+  // Almacenamos el input consola en un 'let opt;'
+  // Ejecutamos un 'do while' para esperar
+  // rpta del input de la consola
+  let opt = "";
+  do {
+    // Aqui decimos q espere el input
+    // del mostrarMenu y lo almacenamos
+    // en el let opt
+    opt = await mostrarMenu(); 
+    // Test
+    console.log({opt});
+    await pausa();
+  } while(opt !== 0)
+
+  
 };
 
 
