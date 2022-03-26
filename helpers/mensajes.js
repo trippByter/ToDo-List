@@ -1,7 +1,8 @@
 require("colors");
 
 const mostrarMenu = () => {
-    // Mostramos el menú en pantalla
+    
+    //==========Mostramos menú en pantalla==========//
     console.clear();
     console.log("  ==========================".yellow);
     console.log("    SELECCIONE UNA OPCIÓN ".cyan);
@@ -26,12 +27,26 @@ const mostrarMenu = () => {
     // En el callback se recibe la info
     readline.question("Selecione una opción: ".bold.blue, (opt) => {
         // Mostramos en input de la consola
-        console.log(opt);
+        //console.log(opt);
         // Para no esperar más info del usuario
         readline.close();
     });
 }
 
+const pausa = () => {
+    const readline = require("readline").createInterface({
+        input: process. stdin,
+        output: process.stdout
+    });
+
+    // Se usa con stdout para mostrar pregunta
+    // En el callback se recibe la info
+    readline.question(`\nPresione ${'ENTER'.bold.blue} para continuar\n`, (opt) => {
+        readline.close();
+    });
+};
+
 module.exports = {
-    mostrarMenu
+    mostrarMenu,
+    pausa
 }

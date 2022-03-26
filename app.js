@@ -4,14 +4,14 @@ NO de forma asíncrona*/
 // primero los de terceros
 // luego las nuestras
 require("colors");
-const { mostrarMenu } = require("./helpers/mensajes");
+const { mostrarMenu, pausa } = require("./helpers/mensajes");
 
 console.clear();
 
 
 const main = async() => {
-    console.log("Kunamasta".rainbow);
     mostrarMenu();
+    pausa();
 };
 
 
