@@ -21,8 +21,10 @@ const main = async() => {
     opt = await mostrarMenu(); 
     // Test
     console.log({opt});
-    await pausa();
-  } while(opt !== 0)
+    // Aqui decimos si "opt" es distinto a cero
+    // ejecuta la funcion pausa()
+    if(opt !== "0") await pausa();
+  } while(opt !== "0")
 
   
 };
