@@ -9,24 +9,69 @@ const preguntas = [
         type: "list",
         name: "opcion",
         message: "Qué desea hacer?",
-        choices: ["opt1", "opt2", "opt3"]
+        // Los choices se trabajan mejor en objetos
+        choices: [
+            {
+                value: "1",
+                name: "1. Crear tarea",
+            },
+            {
+                value: "2",
+                name: "2. Listar tareas",
+            },
+            {
+                value: "3",
+                name: "3. Listar tareas completadas",
+            },
+            {
+                value: "4",
+                name: "4. Listar tareas pendientes",
+            },
+            {
+                value: "5",
+                name: "5. Completar tarea(s)",
+            },
+            {
+                value: "6",
+                name: "6. Borrar tarea",
+            },
+            {
+                value: "0",
+                name: "0. Salir",
+            }
+        ]
     }
 ];
 
 const inquirerMenu = async() => {
 
-    // console.clear();
+    console.clear();
     console.log("  ==========================".yellow);
     console.log("    SELECCIONE UNA OPCIÓN ".cyan);
     console.log("  ==========================\n".yellow);   
     // "inquirer" trabaja en base a promesas
     // inquirer.prompt = hacer preguntas (revisar doc)
     // Lo que se reciba del inquirer.prompt,
-    // se guarda en opt
-    const opt = await inquirer.prompt(preguntas);
-    return opt;
+    // se guarda en opt.
+    //Lo mostramos mediante "opcion"
+    const {opcion} = await inquirer.prompt(preguntas);
+    return opcion;
 };
 
+const pausa = async() => {
+    const preguntasPausa = [
+        {
+            type: "input",
+            name: "enter",
+            message: `Presione ${"ENTER".bold.blue} para continuar.`
+        }
+    ];
+    console.log("\n");
+   await inquirer.prompt(preguntasPausa);
+};
+
+
 module.exports = {
-    inquirerMenu
+    inquirerMenu,
+    pausa
 };

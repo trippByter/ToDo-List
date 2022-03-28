@@ -4,9 +4,9 @@ NO de forma asíncrona*/
 // primero los de terceros
 // luego las nuestras
 require("colors");
-const { inquirerMenu } = require("./helpers/inquirer");
+const { inquirerMenu, pausa } = require("./helpers/inquirer");
 
-console.clear();
+// console.clear();
 
 
 const main = async() => {
@@ -19,6 +19,7 @@ const main = async() => {
     opt = await inquirerMenu();
     // Test
     console.log({opt});
+    await pausa();
   } while(opt !== "0");
 
   
