@@ -4,7 +4,7 @@ NO de forma asíncrona*/
 // primero los de terceros
 // luego las nuestras
 require("colors");
-const { mostrarMenu, pausa } = require("./helpers/mensajes");
+const { inquirerMenu } = require("./helpers/inquirer");
 
 console.clear();
 
@@ -15,16 +15,11 @@ const main = async() => {
   // rpta del input de la consola
   let opt = "";
   do {
-    // Aqui decimos q espere el input
-    // del mostrarMenu y lo almacenamos
-    // en el let opt
-    opt = await mostrarMenu(); 
+    
+    opt = await inquirerMenu();
     // Test
     console.log({opt});
-    // Aqui decimos si "opt" es distinto a cero
-    // ejecuta la funcion pausa()
-    if(opt !== "0") await pausa();
-  } while(opt !== "0")
+  } while(opt !== "0");
 
   
 };
