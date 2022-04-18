@@ -67,11 +67,36 @@ const pausa = async() => {
         }
     ];
     console.log("\n");
-   await inquirer.prompt(preguntasPausa);
+    await inquirer.prompt(preguntasPausa);
+};
+
+// Aquí enviamos el valor que quiero 
+// imprimir por consola
+const leerInput = async(message) => {
+    const preguntasInput = [
+        {
+            type: "input", // Para que la persona pueda escribir
+            name: "desc",
+            message,
+            validate(value){
+                if(value.length === 0){
+                    return "Por favor ingrese un valor";
+                }
+                // Si pasa la validacion, return true
+                return true;
+            }   
+
+        } 
+    ];
+
+    // Aquí devuelve un objeto
+    const {desc} = await inquirer.prompt(preguntasInput);
+    return desc;
 };
 
 
 module.exports = {
     inquirerMenu,
-    pausa
+    pausa,
+    leerInput
 };
